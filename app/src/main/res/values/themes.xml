@@ -6,4 +6,15 @@
     </style>
 
     <style name="Theme.SafeGuard" parent="Base.Theme.SafeGuard" />
+
+    <!-- Text property-->
+    <style name="bold">
+        <item name="android:fontFamily">@font/dmsans_bold</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="medium">
+        <item name="android:fontFamily">@font/dmsans_medium</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
 </resources>
