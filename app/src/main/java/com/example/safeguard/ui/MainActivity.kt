@@ -1,4 +1,4 @@
-package com.example.safeguard.view
+package com.example.safeguard.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

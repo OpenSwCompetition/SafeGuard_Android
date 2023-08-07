@@ -1,4 +1,4 @@
-package com.example.safeguard.view.dialog
+package com.example.safeguard.ui.dialog
 
 import android.app.Dialog
 import android.graphics.Color
