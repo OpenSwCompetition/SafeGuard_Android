@@ -1,5 +1,6 @@
 package com.example.safeguard.view.login
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -9,6 +10,7 @@ import androidx.activity.OnBackPressedCallback
 import com.example.safeguard.R
 import com.example.safeguard.databinding.ActivityLoginBinding
 import com.example.safeguard.util.binding.BindingActivity
+import com.example.safeguard.view.MainActivity
 import com.example.safeguard.view.dialog.FinishDialog
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuth
@@ -29,15 +31,16 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
-
         this.onBackPressedDispatcher.addCallback(this, callback)
 
         auth = FirebaseAuth.getInstance()
-        val button = findViewById<Button>(R.id.signUpButton)
 
-
-        button.setOnClickListener {
+        binding.loginButton.setOnClickListener {
+            Intent(this@LoginActivity, MainActivity::class.java).apply {
+                startActivity(this)
+            }
+        }
+        binding.signUpButton.setOnClickListener {
             val phoneNumber = binding.phoneNumberText.text.toString()
             sendVerificationCode("+82${phoneNumber.substring(1)}")
         }
