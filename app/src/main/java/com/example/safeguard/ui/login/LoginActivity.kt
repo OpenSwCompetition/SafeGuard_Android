@@ -37,10 +37,11 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
                 startActivity(this)
             }
         }
-        binding.signUpButton.setOnClickListener {
-            val phoneNumber = binding.phoneNumberText.text.toString()
-            sendVerificationCode("+82${phoneNumber.substring(1)}")
-        }
+
+//        binding.signUpButton.setOnClickListener {
+//            val phoneNumber = binding.phoneNumberText.text.toString()
+//            sendVerificationCode("+82${phoneNumber.substring(1)}")
+//        }
     }
 
     private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
