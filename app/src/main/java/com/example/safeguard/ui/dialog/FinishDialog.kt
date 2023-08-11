@@ -5,14 +5,14 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.view.Window
 import androidx.appcompat.app.AppCompatActivity
-import com.example.safeguard.databinding.FinishDialogBinding
+import com.example.safeguard.databinding.DialogFinishBinding
 
 class FinishDialog(private val context : AppCompatActivity) {
-    private lateinit var binding : FinishDialogBinding
+    private lateinit var binding : DialogFinishBinding
     private val dialog = Dialog(context)
 
     fun initDialog() {
-        binding = FinishDialogBinding.inflate(context.layoutInflater)
+        binding = DialogFinishBinding.inflate(context.layoutInflater)
         dialog.apply {
             requestWindowFeature(Window.FEATURE_NO_TITLE)
             setContentView(binding.root)
