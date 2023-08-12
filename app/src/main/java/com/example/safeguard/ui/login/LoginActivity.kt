@@ -1,17 +1,14 @@
-package com.example.safeguard.view.login
+package com.example.safeguard.ui.login
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
-import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import com.example.safeguard.R
 import com.example.safeguard.databinding.ActivityLoginBinding
 import com.example.safeguard.util.binding.BindingActivity
-import com.example.safeguard.view.MainActivity
-import com.example.safeguard.view.dialog.FinishDialog
+import com.example.safeguard.ui.MainActivity
+import com.example.safeguard.ui.dialog.FinishDialog
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthCredential
@@ -40,10 +37,11 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
                 startActivity(this)
             }
         }
-        binding.signUpButton.setOnClickListener {
-            val phoneNumber = binding.phoneNumberText.text.toString()
-            sendVerificationCode("+82${phoneNumber.substring(1)}")
-        }
+
+//        binding.signUpButton.setOnClickListener {
+//            val phoneNumber = binding.phoneNumberText.text.toString()
+//            sendVerificationCode("+82${phoneNumber.substring(1)}")
+//        }
     }
 
     private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
