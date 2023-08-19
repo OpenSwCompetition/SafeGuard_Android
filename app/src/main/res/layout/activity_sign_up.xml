@@ -67,7 +67,8 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:paddingStart="10dp"
-                android:inputType="number"/>
+                android:inputType="number"
+                android:maxLines="1"/>
 
             <Button
                 android:id="@+id/sendButton"
@@ -105,7 +106,8 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:paddingStart="10dp"
-                android:inputType="number"/>
+                android:inputType="number"
+                android:maxLines="1"/>
 
             <Button
                 android:id="@+id/certificationButton"
@@ -140,7 +142,8 @@
                 app:layout_constraintTop_toBottomOf="@+id/passwordText"
                 android:background="@drawable/edittext_bg"
                 android:layout_marginTop="10dp"
-                android:paddingStart="10dp"/>
+                android:paddingStart="10dp"
+                android:maxLines="1"/>
 
             <TextView
                 android:id="@+id/passwordCheckText"
@@ -160,7 +163,8 @@
                 app:layout_constraintTop_toBottomOf="@+id/passwordCheckText"
                 android:background="@drawable/edittext_bg"
                 android:layout_marginTop="10dp"
-                android:paddingStart="10dp"/>
+                android:paddingStart="10dp"
+                android:maxLines="1"/>
 
             <TextView
                 android:id="@+id/nameText"
@@ -180,7 +184,8 @@
                 app:layout_constraintTop_toBottomOf="@+id/nameText"
                 android:background="@drawable/edittext_bg"
                 android:layout_marginTop="10dp"
-                android:paddingStart="10dp"/>
+                android:paddingStart="10dp"
+                android:maxLines="1"/>
 
             <TextView
                 android:id="@+id/birthText"
