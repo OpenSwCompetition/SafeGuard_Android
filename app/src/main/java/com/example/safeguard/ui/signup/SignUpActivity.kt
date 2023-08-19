@@ -1,11 +1,13 @@
 package com.example.safeguard.ui.signup
 
 import android.app.DatePickerDialog
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import com.example.safeguard.R
 import com.example.safeguard.databinding.ActivitySignUpBinding
+import com.example.safeguard.ui.login.LoginActivity
 import com.example.safeguard.util.binding.BindingActivity
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuth
@@ -43,9 +45,14 @@ class SignUpActivity : BindingActivity<ActivitySignUpBinding>(R.layout.activity_
             }
         }
 
-//        binding.completeButton.setOnClickListener {
-//
-//        }
+        binding.completeButton.setOnClickListener {
+            if(isCertified&&
+                isValidPassword(binding.password.text.toString(), binding.passwordCheck.text.toString())){
+                Toast.makeText(this@SignUpActivity, "회원가입 성공", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this@SignUpActivity, LoginActivity::class.java)
+                startActivity(intent)
+            }
+        }
 
         binding.birth.setOnClickListener {
             initBirth()
