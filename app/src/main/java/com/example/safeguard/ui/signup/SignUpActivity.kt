@@ -1,15 +1,19 @@
 package com.example.safeguard.ui.signup
 
+import android.app.DatePickerDialog
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import com.example.safeguard.R
 import com.example.safeguard.databinding.ActivitySignUpBinding
+import com.example.safeguard.ui.login.LoginActivity
 import com.example.safeguard.util.binding.BindingActivity
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthProvider
+import java.util.Calendar
 import java.util.concurrent.TimeUnit
 
 class SignUpActivity : BindingActivity<ActivitySignUpBinding>(R.layout.activity_sign_up) {
@@ -42,7 +46,16 @@ class SignUpActivity : BindingActivity<ActivitySignUpBinding>(R.layout.activity_
         }
 
         binding.completeButton.setOnClickListener {
+            if(isCertified&&
+                isValidPassword(binding.password.text.toString(), binding.passwordCheck.text.toString())){
+                Toast.makeText(this@SignUpActivity, "회원가입 성공", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this@SignUpActivity, LoginActivity::class.java)
+                startActivity(intent)
+            }
+        }
 
+        binding.birth.setOnClickListener {
+            initBirth()
         }
     }
 
@@ -58,10 +71,30 @@ class SignUpActivity : BindingActivity<ActivitySignUpBinding>(R.layout.activity_
             }
     }
 
+    private fun initBirth(){
+        val cal = Calendar.getInstance()
+        val dateSetListener = DatePickerDialog.OnDateSetListener { _, year, month, day ->
+            val dateString = "${year}년 ${month+1}월 ${day}일"
+            binding.birth.apply {
+                text = dateString
+                isSelected = true
+//                age = calculateAge(year, month+1, day)
+            }
+        }
+        DatePickerDialog(this,
+            dateSetListener,
+            cal.get(Calendar.YEAR),
+            cal.get(Calendar.MONTH),
+            cal.get(Calendar.DAY_OF_MONTH)).
+        show()
+    }
+
     private fun isValidNumber(number: String) = when(number.length){
-        10 -> true
+        11 -> true
         else -> false
     }
+
+    private fun isValidPassword(password: String, passwordCheck: String): Boolean = password==passwordCheck
 
     private fun verifyCode(code: String) {
         val credential = PhoneAuthProvider.getCredential(verificationId, code)
@@ -88,6 +121,7 @@ class SignUpActivity : BindingActivity<ActivitySignUpBinding>(R.layout.activity_
                     token: PhoneAuthProvider.ForceResendingToken
                 ) {
                     isCodeSend = true
+                    Toast.makeText(this@SignUpActivity, "인증번호를 전송했습니다", Toast.LENGTH_SHORT).show()
                     this@SignUpActivity.verificationId = verificationId
                 }
             })
